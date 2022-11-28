@@ -2,14 +2,15 @@
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 
-namespace Acme.BookStore;
-
-public class BookStoreTestDataSeedContributor : IDataSeedContributor, ITransientDependency
+namespace Acme.BookStore
 {
-    public Task SeedAsync(DataSeedContext context)
+    public class BookStoreTestDataSeedContributor : IDataSeedContributor, ITransientDependency
     {
-        /* Seed additional test data... */
+        public Task SeedAsync(DataSeedContext context)
+        {
+            /* Seed additional test data... */
 
-        return Task.CompletedTask;
+            return Task.CompletedTask;
+        }
     }
 }

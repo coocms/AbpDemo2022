@@ -1,40 +1,26 @@
 using Microsoft.Extensions.Hosting;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 
-namespace Acme.BookStore.HttpApi.Client.ConsoleTestApp;
-
-public class ConsoleTestAppHostedService : IHostedService
+namespace Acme.BookStore.HttpApi.Client.ConsoleTestApp
 {
-    private readonly IConfiguration _configuration;
-
-    public ConsoleTestAppHostedService(IConfiguration configuration)
+    public class ConsoleTestAppHostedService : IHostedService
     {
-        _configuration = configuration;
-    }
-
-    public async Task StartAsync(CancellationToken cancellationToken)
-    {
-        using (var application = await AbpApplicationFactory.CreateAsync<BookStoreConsoleApiClientModule>(options =>
+        public async Task StartAsync(CancellationToken cancellationToken)
         {
-           options.Services.ReplaceConfiguration(_configuration);
-           options.UseAutofac();
-        }))
-        {
-            await application.InitializeAsync();
+            using (var application = AbpApplicationFactory.Create<BookStoreConsoleApiClientModule>())
+            {
+                application.Initialize();
 
-            var demo = application.ServiceProvider.GetRequiredService<ClientDemoService>();
-            await demo.RunAsync();
+                var demo = application.ServiceProvider.GetRequiredService<ClientDemoService>();
+                await demo.RunAsync();
 
-            await application.ShutdownAsync();
+                application.Shutdown();
+            }
         }
-    }
 
-    public Task StopAsync(CancellationToken cancellationToken)
-    {
-        return Task.CompletedTask;
+        public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
     }
 }

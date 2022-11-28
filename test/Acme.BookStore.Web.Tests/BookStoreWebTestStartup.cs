@@ -4,17 +4,18 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Volo.Abp;
 
-namespace Acme.BookStore;
-
-public class BookStoreWebTestStartup
+namespace Acme.BookStore
 {
-    public void ConfigureServices(IServiceCollection services)
+    public class BookStoreWebTestStartup
     {
-        services.AddApplication<BookStoreWebTestModule>();
-    }
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddApplication<BookStoreWebTestModule>();
+        }
 
-    public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
-    {
-        app.InitializeApplication();
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
+        {
+            app.InitializeApplication();
+        }
     }
 }
