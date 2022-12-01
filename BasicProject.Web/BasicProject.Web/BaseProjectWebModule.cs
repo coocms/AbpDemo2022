@@ -26,6 +26,13 @@ namespace BasicProject.Web
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             ConfigureSwaggerServices(context.Services);
+
+            //配置options
+            base.Configure<AbpAspNetCoreMvcOptions>(options =>
+            {
+                options.ConventionalControllers
+                .Create(typeof(BasicProjectApplicationModule).Assembly);
+            });
         }
 
         /// <summary>

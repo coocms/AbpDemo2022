@@ -11,7 +11,7 @@ namespace BasicProject.Application
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            context.Services.AddSingleton<IUserAppService, UserAppService>();//这才是模块化的做法
+            //context.Services.AddSingleton<IUserAppService, UserAppService>();//这才是模块化的做法
         }
     }
 }
