@@ -5,6 +5,8 @@ using BasicProject.Application.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.AspNetCore;
 using Volo.Abp.AspNetCore.Mvc;
@@ -15,7 +17,7 @@ namespace BasicProject.Web
     [DependsOn(typeof(AbpAspNetCoreMvcModule))]//通过特性来申明依赖，会在程序启动过程中，先加载这个类，执行其初始化方法
     [DependsOn(typeof(BasicProjectApplicationContractsModule))]
     [DependsOn(typeof(BasicProjectApplicationModule))]
-    public class BaseProjectWebModule: AbpModule
+    public class BaseProjectWebModule : AbpModule
     {
         /// <summary>
         /// 代替StartUp 中 ConfigureServices
@@ -23,8 +25,9 @@ namespace BasicProject.Web
         /// <param name="context"></param>
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            
+            ConfigureSwaggerServices(context.Services);
         }
+
         /// <summary>
         /// 代替StartUp 中 Configure 完成初始化
         /// </summary>
@@ -48,7 +51,11 @@ namespace BasicProject.Web
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "BasicProject API");
+            });
             //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -57,6 +64,18 @@ namespace BasicProject.Web
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private void ConfigureSwaggerServices(IServiceCollection services)
+        {
+            services.AddSwaggerGen(
+                options =>
+                {
+                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "BasicProject API", Version = "v1" });
+                    options.DocInclusionPredicate((docName, description) => true);
+                    options.CustomSchemaIds(type => type.FullName);
+                }
+            );
         }
     }
 }

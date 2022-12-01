@@ -24,8 +24,8 @@ namespace BasicProject.Web
         public void ConfigureServices(IServiceCollection services)
         {
             //原来是IOC 注册
-
             services.AddApplication<BaseProjectWebModule>();//abp 包装了一层，由BaseProjectWebModule 中的 ConfigureServices 完成同样的功能
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,6 +33,7 @@ namespace BasicProject.Web
         {
             //--以前是配置管道的
             app.InitializeApplication();//初始化app ，执行注册的Module 中的 ConfigureServices
+            
         }
     }
 }

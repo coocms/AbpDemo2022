@@ -37,17 +37,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.BookStore.HttpApi.Clie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.BookStore.DbMigrator", "src\Acme.BookStore.DbMigrator\Acme.BookStore.DbMigrator.csproj", "{AA94D832-1CCC-4715-95A9-A483F23A1A5D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BasicProject", "BasicProject", "{4C8ECADD-C285-4CD3-8EF4-9FF2177E9D87}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BasicProjectMvc", "BasicProjectMvc", "{4C8ECADD-C285-4CD3-8EF4-9FF2177E9D87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicProject.Web", "BasicProject.Web\BasicProject.Web\BasicProject.Web.csproj", "{AD600E42-46D0-4E02-90C3-10E6FB97266B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicProject.Web", "BasicProject.Web\BasicProject.Web\BasicProject.Web.csproj", "{AD600E42-46D0-4E02-90C3-10E6FB97266B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Useless", "Useless", "{9E67BDD0-C806-4C9C-8B04-E760E002268E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{FE92512C-4D3E-4465-B4DA-70BC7B0F05A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{FE92512C-4D3E-4465-B4DA-70BC7B0F05A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicProject.Application", "BasicProject.Web\BasicProject.Application\BasicProject.Application.csproj", "{1445EBB6-649E-4A59-B436-E1AE102A49AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicProject.Application", "BasicProject.Web\BasicProject.Application\BasicProject.Application.csproj", "{1445EBB6-649E-4A59-B436-E1AE102A49AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicProject.Application.Contracts", "BasicProject.Web\BasicProject.Application.Contracts\BasicProject.Application.Contracts.csproj", "{77F71212-967B-4ACD-8974-1E4115A92B7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicProject.Application.Contracts", "BasicProject.Web\BasicProject.Application.Contracts\BasicProject.Application.Contracts.csproj", "{77F71212-967B-4ACD-8974-1E4115A92B7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

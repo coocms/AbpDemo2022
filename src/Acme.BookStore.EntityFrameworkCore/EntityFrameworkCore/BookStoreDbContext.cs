@@ -1,6 +1,7 @@
 ﻿using Acme.BookStore.Authors;
 using Acme.BookStore.Books;
 using Acme.BookStore.Notices;
+using Acme.BookStore.Students;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -61,6 +62,8 @@ namespace Acme.BookStore.EntityFrameworkCore
         public DbSet<Author> Authors { get; set; }
 
         public DbSet<Notice> Notices { get; set; }
+
+        public DbSet<Student> Students { get; set; }
 
         public BookStoreDbContext(DbContextOptions<BookStoreDbContext> options)
             : base(options)
@@ -125,6 +128,25 @@ namespace Acme.BookStore.EntityFrameworkCore
 
                 b.HasIndex(x => x.Name);
             });
+
+            builder.Entity<Student>(b =>
+            {
+                b.ToTable(BookStoreConsts.DbTablePrefix + "Students",
+                    BookStoreConsts.DbSchema);
+
+                b.ConfigureByConvention();
+
+                b.Property(x => x.Name)
+                    .IsRequired()
+                    .HasMaxLength(StudentConsts.MaxNameLength);
+
+                b.Property(o => o.Description)
+                .IsRequired()
+                .HasMaxLength(StudentConsts.MaxDescribeLength);
+
+                b.HasIndex(x => x.Name);
+            });
+
         }
     }
 }
