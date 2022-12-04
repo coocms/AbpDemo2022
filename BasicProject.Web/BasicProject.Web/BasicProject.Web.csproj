@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DashboardPlugins\Dashboard.HttpApi\Dashboard.HttpApi.csproj" />
     <ProjectReference Include="..\BasicProject.Application.Contracts\BasicProject.Application.Contracts.csproj" />
     <ProjectReference Include="..\BasicProject.Application\BasicProject.Application.csproj" />
   </ItemGroup>

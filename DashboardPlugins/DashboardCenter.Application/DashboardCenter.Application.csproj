@@ -7,13 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Books\**" />
-    <EmbeddedResource Remove="Books\**" />
-    <None Remove="Books\**" />
+    <PackageReference Include="Volo.Abp.Castle.Core" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Core" Version="6.0.1" />
+    <ProjectReference Include="..\DashboardCenter.Application.Contracts\DashboardCenter.Application.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

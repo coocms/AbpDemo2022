@@ -9,7 +9,8 @@ using Volo.Abp.DependencyInjection;
 
 namespace BasicProject.Application.Users
 {
-    public class UserAppService : IUserAppService, IRemoteService,ITransientDependency
+
+    public class UserAppService : IUserAppService, IRemoteService,ISingletonDependency
     {
         public async Task<UserDto> GetUserAsync(int id)
         {

@@ -2,6 +2,8 @@
 using BasicProject.Application.Contracts;
 using BasicProject.Application.Contracts.Users;
 using BasicProject.Application.Users;
+using Dashboard.HttpApi;
+using DashboardCenter.Application;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -17,6 +19,8 @@ namespace BasicProject.Web
     [DependsOn(typeof(AbpAspNetCoreMvcModule))]//通过特性来申明依赖，会在程序启动过程中，先加载这个类，执行其初始化方法
     [DependsOn(typeof(BasicProjectApplicationContractsModule))]
     [DependsOn(typeof(BasicProjectApplicationModule))]
+
+    [DependsOn(typeof(DashboardCenterHttpApiModule))]
     public class BaseProjectWebModule : AbpModule
     {
         /// <summary>
