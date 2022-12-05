@@ -6,8 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using Volo.Abp.Modularity.PlugIns;
 
 namespace BasicProject.Web
 {
@@ -24,7 +27,14 @@ namespace BasicProject.Web
         public void ConfigureServices(IServiceCollection services)
         {
             //原来是IOC 注册
-            services.AddApplication<BaseProjectWebModule>();//abp 包装了一层，由BaseProjectWebModule 中的 ConfigureServices 完成同样的功能
+            services.AddApplication<BaseProjectWebModule>(); //注册模块//abp 包装了一层，由BaseProjectWebModule 中的 ConfigureServices 完成同样的功能
+            //services.AddApplication<BaseProjectWebModule>(option=>
+            //{
+            //    string curent = System.Environment.CurrentDirectory;
+            //    string currentParent = Directory.GetParent(curent).ToString();
+
+            //    option.PlugInSources.AddFolder(Path.Combine(currentParent, "Plugins"));
+            //});
             
         }
 
