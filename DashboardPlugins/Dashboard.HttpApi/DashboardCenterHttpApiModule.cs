@@ -12,6 +12,7 @@ namespace Dashboard.HttpApi
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
+         
             //配置options
             base.Configure<AbpAspNetCoreMvcOptions>(options =>
             {
