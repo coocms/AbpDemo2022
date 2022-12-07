@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DashboardCenter.Application.Contracts;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
+using Volo.Abp.Http.Client;
 using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
@@ -16,6 +18,9 @@ namespace Acme.BookStore
         typeof(AbpTenantManagementHttpApiClientModule),
         typeof(AbpFeatureManagementHttpApiClientModule)
     )]
+    [DependsOn(typeof(AbpHttpClientModule))]//--动态api
+
+    [DependsOn(typeof(DashboardCenterApplicationContractsModule))]//引用抽象
     public class BookStoreHttpApiClientModule : AbpModule
     {
         public const string RemoteServiceName = "Default";
