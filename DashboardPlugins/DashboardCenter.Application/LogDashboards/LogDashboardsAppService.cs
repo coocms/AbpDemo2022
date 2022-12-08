@@ -15,7 +15,7 @@ namespace DashboardCenter.Application.LogDashboards
     //[RemoteService(IsEnabled = false)]//不暴露服务
     //[RemoteService(IsMetadataEnabled = false)] //不暴露给swagger
     public class LogDashboardsAppService :
-        ILogDashboardsAppService,ITransientDependency,IRemoteService
+        ILogDashboardsAppService
     {
         public LogDto GetLogDashboardsAsync()
         {

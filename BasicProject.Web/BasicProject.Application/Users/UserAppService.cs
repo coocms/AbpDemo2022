@@ -1,4 +1,5 @@
 ﻿using BasicProject.Application.Contracts.Users;
+using DashboardCenter.Application.Contracts.LogDashboards;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,11 @@ namespace BasicProject.Application.Users
 
     public class UserAppService : IUserAppService, IRemoteService,ISingletonDependency
     {
+        ILogDashboardsAppService _logDashboardsAppService;
+        public UserAppService(ILogDashboardsAppService logDashboardsAppService)
+        {
+            _logDashboardsAppService = logDashboardsAppService;
+        }
         public async Task<UserDto> GetUserAsync(int id)
         {
             await Task.CompletedTask;
@@ -27,6 +33,7 @@ namespace BasicProject.Application.Users
 
         public async Task<IEnumerable<UserDto>> GetUserAsync()
         {
+            _logDashboardsAppService.GetLogDashboardsAsync();
             await Task.CompletedTask;
             
             return new List<UserDto>
