@@ -1,26 +1,23 @@
-﻿using BasicProject.Application;
-using BasicProject.Application.Contracts;
-using BasicProject.DynamicClient.HttpApi.Client;
-using Coocms.Application.Contracts;
-using DashboardCenter.Application.Contracts;
+﻿
+//using Dashboard.HttpApi;
+//using DashboardCenter.Application;
+using Coocms.HttpApi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.Threading.Tasks;
 using Volo.Abp;
+using Volo.Abp.AspNetCore;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Modularity;
 
-namespace BasicProject.DynamicClient.Web
+namespace BasicProject.Web
 {
     [DependsOn(typeof(AbpAspNetCoreMvcModule))]//通过特性来申明依赖，会在程序启动过程中，先加载这个类，执行其初始化方法
-    [DependsOn(typeof(BasicProjectApplicationModule))]
-    [DependsOn(typeof(BasicProjectApplicationContractsModule))]
-
-    [DependsOn(typeof(DashboardCenterApplicationContractsModule))]
-    [DependsOn(typeof(CoocmsApplicationContractsModule))]
-    [DependsOn(typeof(BasicProjectDynamicClientHttpApiClientModule))]
-    public class BaseProjectWebModule:AbpModule
+    [DependsOn(typeof(CoocmsHttpApiModule))]
+    
+    public class CoocmsWebModule : AbpModule
     {
         /// <summary>
         /// 代替StartUp 中 ConfigureServices
@@ -30,16 +27,13 @@ namespace BasicProject.DynamicClient.Web
         {
             ConfigureSwaggerServices(context.Services);
 
-            //配置options
-            base.Configure<AbpAspNetCoreMvcOptions>(options =>
-            {
-                options.ConventionalControllers
-                .Create(typeof(BasicProjectApplicationModule).Assembly);
-
-            });
 
         }
 
+        /// <summary>
+        /// 代替StartUp 中 Configure 完成初始化
+        /// </summary>
+        /// <param name="context"></param>
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
             var app = context.GetApplicationBuilder();
@@ -73,6 +67,7 @@ namespace BasicProject.DynamicClient.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
         private void ConfigureSwaggerServices(IServiceCollection services)
         {
             services.AddSwaggerGen(

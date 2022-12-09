@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Core" Version="6.0.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.Core" Version="6.0.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\CoocmsPlugins\Coocms.Application.Contracts\Coocms.Application.Contracts.csproj" />
     <ProjectReference Include="..\..\DashboardPlugins\DashboardCenter.Application.Contracts\DashboardCenter.Application.Contracts.csproj" />
     <ProjectReference Include="..\BasicProject.Application.Contracts\BasicProject.Application.Contracts.csproj" />
   </ItemGroup>

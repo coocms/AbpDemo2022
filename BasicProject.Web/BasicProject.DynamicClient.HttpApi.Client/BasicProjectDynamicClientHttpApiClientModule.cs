@@ -1,4 +1,5 @@
-﻿using DashboardCenter.Application.Contracts;
+﻿using Coocms.Application.Contracts;
+using DashboardCenter.Application.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Http.Client;
 using Volo.Abp.Modularity;
@@ -8,6 +9,7 @@ namespace BasicProject.DynamicClient.HttpApi.Client
     [DependsOn(typeof(AbpHttpClientModule))]//--动态api
 
     [DependsOn(typeof(DashboardCenterApplicationContractsModule))]//引用抽象
+    [DependsOn(typeof(CoocmsApplicationContractsModule))]//引用抽象
 
 
     public class BasicProjectDynamicClientHttpApiClientModule : AbpModule
@@ -22,6 +24,11 @@ namespace BasicProject.DynamicClient.HttpApi.Client
                 typeof(DashboardCenterApplicationContractsModule).Assembly,
                 RemoteServiceName,asDefaultServices:true
             );
+
+            context.Services.AddHttpClientProxies(
+                typeof(CoocmsApplicationContractsModule).Assembly,
+                "Coocms", asDefaultServices: true
+);
 
 
         }

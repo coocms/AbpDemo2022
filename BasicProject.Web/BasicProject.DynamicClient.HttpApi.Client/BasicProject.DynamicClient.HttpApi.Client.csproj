@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\CoocmsPlugins\Coocms.Application.Contracts\Coocms.Application.Contracts.csproj" />
     <ProjectReference Include="..\..\DashboardPlugins\DashboardCenter.Application.Contracts\DashboardCenter.Application.Contracts.csproj" />
   </ItemGroup>
 

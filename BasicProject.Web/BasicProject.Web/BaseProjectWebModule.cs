@@ -2,6 +2,7 @@
 using BasicProject.Application.Contracts;
 using BasicProject.Application.Contracts.Users;
 using BasicProject.Application.Users;
+using Coocms.HttpApi;
 using Dashboard.HttpApi;
 //using Dashboard.HttpApi;
 //using DashboardCenter.Application;
@@ -22,6 +23,7 @@ namespace BasicProject.Web
     [DependsOn(typeof(BasicProjectApplicationModule))]
 
     [DependsOn(typeof(DashboardCenterHttpApiModule))]
+    [DependsOn(typeof(CoocmsHttpApiModule))]
     public class BaseProjectWebModule : AbpModule
     {
         /// <summary>
@@ -32,12 +34,7 @@ namespace BasicProject.Web
         {
             ConfigureSwaggerServices(context.Services);
 
-            //配置options
-            base.Configure<AbpAspNetCoreMvcOptions>(options =>
-            {
-                options.ConventionalControllers
-                .Create(typeof(BasicProjectApplicationModule).Assembly);
-            });
+
         }
 
         /// <summary>

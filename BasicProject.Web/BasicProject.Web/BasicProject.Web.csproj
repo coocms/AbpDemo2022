@@ -6,11 +6,12 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="6.0.1" />
-    <PackageReference Include="Volo.Abp.Autofac" Version="6.0.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="6.0.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\CoocmsPlugins\Coocms.HttpApi\Coocms.HttpApi.csproj" />
     <ProjectReference Include="..\..\DashboardPlugins\Dashboard.HttpApi\Dashboard.HttpApi.csproj" />
     <ProjectReference Include="..\BasicProject.Application.Contracts\BasicProject.Application.Contracts.csproj" />
     <ProjectReference Include="..\BasicProject.Application\BasicProject.Application.csproj" />

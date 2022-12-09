@@ -4,6 +4,7 @@ using BasicProject.Application.Users;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Volo.Abp;
+using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Modularity;
 
 namespace BasicProject.Application
@@ -16,6 +17,14 @@ namespace BasicProject.Application
             Console.BackgroundColor = ConsoleColor.Red;
             Console.WriteLine($" {MethodInfo.GetCurrentMethod()!.Name} Called ");
             Console.BackgroundColor = ConsoleColor.Black;
+
+            //配置options
+            base.Configure<AbpAspNetCoreMvcOptions>(options =>
+            {
+                options.ConventionalControllers
+                .Create(typeof(BasicProjectApplicationModule).Assembly);
+            });
+
             //context.Services.AddSingleton<IUserAppService, UserAppService>();//这才是模块化的做法
         }
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
