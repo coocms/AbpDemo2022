@@ -35,7 +35,7 @@ namespace BasicProject.Application.Users
 
         public async Task<IEnumerable<UserDto>> GetUserAsync()
         {
-            //_logDashboardsAppService.GetLogDashboardsAsync();
+            _logDashboardsAppService.GetLogDashboardsAsync();
             var ok = await _coocmsApplicationService.GetCoocmsDtoAsync();
             await Task.CompletedTask;
             
