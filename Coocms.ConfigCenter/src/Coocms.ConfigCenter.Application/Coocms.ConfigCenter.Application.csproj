@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Coocms.ConfigCenter</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Coocms.ConfigCenter.Domain\Coocms.ConfigCenter.Domain.csproj" />
+    <ProjectReference Include="..\Coocms.ConfigCenter.Application.Contracts\Coocms.ConfigCenter.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Account.Application" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.Identity.Application" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="6.0.2" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="6.0.2" />
+  </ItemGroup>
+
+</Project>
